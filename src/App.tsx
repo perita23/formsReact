@@ -1,10 +1,15 @@
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import NavBar from "./components/header/NavBar";
+import Home from "./pages/home";
 import "./styles/App.css";
-
 function App() {
   return (
-    <div>
-      <h1>Adiós</h1>
-    </div>
+    <Router>
+      <NavBar />
+      <Routes>{
+        <Route path="/" element={<Home />} />}
+      </Routes>
+    </Router>
   );
 }
 export default App;

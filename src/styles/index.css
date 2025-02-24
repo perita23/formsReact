@@ -9,25 +9,15 @@
   --meta-dark-gray: #3a3b3c;
   --meta-white: #ffffff;
   --meta-black: #000000;
+
+  --meta-font: "Meta Sans", "Helvetica Neue", Arial, sans-serif;
 }
 
 body {
   background-color: var(--meta-background);
   color: var(--meta-text);
+  
 }
-
-h1 {
-  color: var(--meta-blue);
-}
-
-button {
-  background-color: var(--meta-blue);
-  color: var(--meta-white);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-
-button:hover {
-  background-color: var(--meta-dark-blue);
+* {
+  font-family: var(--meta-font);
 }
