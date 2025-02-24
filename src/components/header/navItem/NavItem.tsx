@@ -1,12 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
-import "../../styles/navItem.css";
+import "./navItem.css";
 
 
 
 const NavItem = ({path,text}: { text: string, path: string } )=>{ 
 
-  const location = useLocation()
-  const isActive = window.location.pathname === path;
+  const location = useLocation();
+  const isActive = location.pathname === path;
 
   return(
     <li className="nav-item">

@@ -1,5 +1,5 @@
-import "../../styles/navbar.css";
-import NavItem from "./NavItem";
+import "./navbar.css";
+import NavItem from "../navItem/NavItem";
 function NavBar() {
   return (
     <header className="navbar">
@@ -8,6 +8,7 @@ function NavBar() {
         <NavItem text="About" path="/about" />
         <NavItem text="Contact" path="/contact" />
       </ul>
+      <div className="nav-item-active-indicator"></div> {/* Indicador flotante */}
     </header>
   );
 }
