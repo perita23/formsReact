@@ -1,0 +1,31 @@
+.bg {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    filter: blur(30px);
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 1) 0%,      /* Blanco puro */
+        rgb(255, 255, 255) 25%,     /* Azul muy claro */
+        rgba(230, 255, 245, 1) 50%,     /* Verde pálido */
+        rgb(255, 255, 255) 75%,     /* Naranja/melocotón claro */
+        rgba(255, 255, 255, 1) 100%     /* Vuelta a blanco puro */
+    );
+    animation: gradientFlow 15s ease infinite;
+    background-size: 200% 200%;
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
