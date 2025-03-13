@@ -3,7 +3,7 @@ import { Formulario } from '../components/Formulario';
 import { getSurveys } from '../api/surveys';
 import { Survey } from '../types';
 
-export const SurveyPage = () => { // Cambié "Survey" por "SurveyPage"
+export const SurveyPage = () => {
   const surveys = getSurveys();
   const [currentSurveyIndex, setCurrentSurveyIndex] = useState(0);
   const [allResponses, setAllResponses] = useState<Record<number, Record<number, string | string[]>>>({});

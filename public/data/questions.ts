@@ -1,4 +1,4 @@
-[
+export const questions = [
     {
       "titulo": "Cuestionario de Datos del Usuario",
       "preguntas": [
