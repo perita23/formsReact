@@ -1,0 +1,35 @@
+.App {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .home, .survey {
+    text-align: center;
+  }
+  
+  .question {
+    margin: 20px 0;
+  }
+  
+  .question label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  .question input[type="text"] {
+    width: 100%;
+    padding: 8px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+  }

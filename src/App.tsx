@@ -1,19 +1,17 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import NavBar from "./components/header/navBar/NavBar";
-import Bg from "./components/UI/bg/bg"; // Assuming bg is a background image or style
-import Home from "./pages/homePage/Home";
-import "./styles/App.css";
-function App() {
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Home } from './pages/Home';
+import { SurveyPage } from './pages/SurveyPage';
+import './styles/App.css';
+
+export const App = () => {
   return (
-    <Router>
-      <Bg />
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {/* <Route path="/formularios" element={} />
-        <Route path="/contact" element={} /> */}
-      </Routes>
-    </Router>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/survey" element={<SurveyPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
-}
-export default App;
+};
