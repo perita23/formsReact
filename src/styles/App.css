@@ -1,35 +1,53 @@
 .App {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .home, .survey {
-    text-align: center;
-  }
-  
-  .question {
-    margin: 20px 0;
-  }
-  
-  .question label {
-    display: block;
-    margin-bottom: 8px;
-  }
-  
-  .question input[type="text"] {
-    width: 100%;
-    padding: 8px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button:disabled {
-    background-color: #ccc;
-  }
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.home, .survey {
+  text-align: center;
+}
+
+.question {
+  margin: 20px 0;
+}
+
+.question label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.question input[type="text"],
+.question textarea,
+.question select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+}
+
+.question textarea {
+  height: 100px;
+}
+
+.question input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 4px;
+  display: block;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+}
