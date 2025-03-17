@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Question } from '../types';
+import { useState } from "react";
+import { Question } from "../types";
 
 interface FormularioProps {
   questions: Question[];
@@ -7,16 +7,21 @@ interface FormularioProps {
 }
 
 export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
-  const [responses, setResponses] = useState<Record<string, string | string[]>>({});
+  const [responses, setResponses] = useState<Record<string, string | string[]>>(
+    {}
+  );
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   // Validar una pregunta según sus restricciones y validaciones
-  const validateQuestion = (question: Question, value: string | string[]): string | null => {
+  const validateQuestion = (
+    question: Question,
+    value: string | string[]
+  ): string | null => {
     const { restricciones, validacion } = question;
 
     // Validar restricciones de longitud
     if (restricciones) {
-      const length = typeof value === 'string' ? value.length : value.length;
+      const length = typeof value === "string" ? value.length : value.length;
       if (restricciones.min && length < restricciones.min) {
         return `Debe tener al menos ${restricciones.min} caracteres`;
       }
@@ -27,17 +32,18 @@ export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
 
     // Validaciones específicas
     if (validacion) {
-      if (validacion.formato === 'email' && typeof value === 'string') {
+      if (validacion.formato === "email" && typeof value === "string") {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(value)) return 'Formato de email inválido';
+        if (!emailRegex.test(value)) return "Formato de email inválido";
         if (validacion.dominio && !value.endsWith(validacion.dominio)) {
           return `El email debe terminar en ${validacion.dominio}`;
         }
       }
-      if (validacion.min_edad && typeof value === 'string') {
+      if (validacion.min_edad && typeof value === "string") {
         const birthDate = new Date(value);
-        const age = (new Date().getFullYear() - birthDate.getFullYear());
-        if (age < validacion.min_edad) return `Debes tener al menos ${validacion.min_edad} años`;
+        const age = new Date().getFullYear() - birthDate.getFullYear();
+        if (age < validacion.min_edad)
+          return `Debes tener al menos ${validacion.min_edad} años`;
       }
       if (validacion.max_seleccionados && Array.isArray(value)) {
         if (value.length > validacion.max_seleccionados) {
@@ -54,7 +60,7 @@ export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
     const question = questions.find((q) => q.id === questionId);
     if (question) {
       const error = validateQuestion(question, value);
-      setErrors((prev) => ({ ...prev, [questionId]: error || '' }));
+      setErrors((prev) => ({ ...prev, [questionId]: error || "" }));
     }
   };
 
@@ -65,7 +71,7 @@ export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
 
     // Validar todas las respuestas
     questions.forEach((question) => {
-      const value = responses[question.id] || '';
+      const value = responses[question.id] || "";
       const error = validateQuestion(question, value);
       if (error) {
         newErrors[question.id] = error;
@@ -87,31 +93,31 @@ export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
           <label>{question.pregunta}</label>
 
           {/* Text */}
-          {question.tipo === 'text' && (
+          {question.tipo === "text" && (
             <input
               type="text"
-              value={(responses[question.id] as string) || ''}
+              value={(responses[question.id] as string) || ""}
               onChange={(e) => handleChange(question.id, e.target.value)}
             />
           )}
 
           {/* Textarea */}
-          {question.tipo === 'textarea' && (
+          {question.tipo === "textarea" && (
             <textarea
-              value={(responses[question.id] as string) || ''}
+              value={(responses[question.id] as string) || ""}
               onChange={(e) => handleChange(question.id, e.target.value)}
             />
           )}
 
           {/* Select */}
-          {question.tipo === 'select' && question.opciones && (
+          {question.tipo === "select" && question.opciones && (
             <select
-              value={(responses[question.id] as string) || ''}
+              value={(responses[question.id] as string) || ""}
               onChange={(e) => handleChange(question.id, e.target.value)}
             >
               <option value="">Selecciona una opción</option>
               {question.opciones.map((option) =>
-                typeof option === 'string' ? (
+                typeof option === "string" ? (
                   <option key={option} value={option}>
                     {option}
                   </option>
@@ -127,18 +133,24 @@ export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
           )}
 
           {/* Check */}
-          {question.tipo === 'check' && question.opciones && (
+          {question.tipo === "check" && question.opciones && (
             <div>
               {question.opciones.map((option) => {
-                const optValue = typeof option === 'string' ? option : option.grupo;
+                const optValue =
+                  typeof option === "string" ? option : option.grupo;
                 return (
                   <label key={optValue}>
                     <input
                       type="checkbox"
                       value={optValue}
-                      checked={(responses[question.id] as string[])?.includes(optValue) || false}
+                      checked={
+                        (responses[question.id] as string[])?.includes(
+                          optValue
+                        ) || false
+                      }
                       onChange={(e) => {
-                        const current = (responses[question.id] as string[]) || [];
+                        const current =
+                          (responses[question.id] as string[]) || [];
                         const updated = e.target.checked
                           ? [...current, optValue]
                           : current.filter((v) => v !== optValue);
@@ -153,12 +165,17 @@ export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
           )}
 
           {/* Mostrar errores */}
-          {errors[question.id] && <span className="error">{errors[question.id]}</span>}
+          {errors[question.id] && (
+            <span className="error">{errors[question.id]}</span>
+          )}
         </div>
       ))}
       <button
         type="submit"
-        disabled={Object.keys(responses).length < questions.length || Object.values(errors).some((e) => e)}
+        disabled={
+          Object.keys(responses).length < questions.length ||
+          Object.values(errors).some((e) => e)
+        }
       >
         Siguiente
       </button>
