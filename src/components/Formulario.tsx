@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Question } from '../types';
+import { useTranslation } from 'react-i18next';
 
 interface FormularioProps {
   questions: Question[];
@@ -9,6 +10,7 @@ interface FormularioProps {
 export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
   const [responses, setResponses] = useState<Record<string, string | string[]>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const { t } = useTranslation();
 
   // Validar una pregunta según sus restricciones y validaciones
   const validateQuestion = (question: Question, value: string | string[]): string | null => {

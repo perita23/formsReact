@@ -3,8 +3,13 @@ import { Formulario } from '../components/Formulario';
 import { getSurveys } from '../api/surveys';
 import { Survey } from '../types';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 
 export const SurveyPage = () => {
+
+  const { t } = useTranslation();
+
   const surveys = getSurveys();
   const [currentSurveyIndex, setCurrentSurveyIndex] = useState(0);
   const [allResponses, setAllResponses] = useState<Record<number, Record<string, string | string[]>>>({});
