@@ -1,15 +1,10 @@
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { SurveyPage } from './pages/SurveyPage';
 import './styles/App.css';
-import { Result } from './pages/Result';
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import { Home } from "./pages/Home";
-import { SurveyPage } from "./pages/SurveyPage";
-import "./styles/App.css";
 
 const AnimatedRoutes = () => {
   const location = useLocation();

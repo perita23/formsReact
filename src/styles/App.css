@@ -46,7 +46,8 @@ body {
   width: 100%;
   height: fit-content;
   font-size: 10vw;
-  line-height: 17vh;
+  line-height: 25vh;
+  padding-left: 2vw;
   border-bottom: var(--color-accent) 2px solid;
   color: var(--color-accent);
   background: linear-gradient(80deg, var(--color-accent), var(--color-accent));
@@ -134,10 +135,6 @@ body {
   color: var(--color-background);
 }
 
-.hbr-cont-img {
-  
-}
-
 /*Intro*/
 .intro-overlay {
   position: fixed;
@@ -156,4 +153,237 @@ body {
   color: #fff;
   font-size: 4rem;
   font-family: sans-serif; /* Cambia la fuente si quieres */
+}
+
+.hbr-cont-lang {
+  display: flex;
+  margin: 5vh;
+  height: 100%;
+}
+
+.lang-button {
+  display: flex;
+  align-items: center;
+  padding: 0.4vw;
+  background-color: #00000000;
+  border: var(--color-accent) 2px solid;
+  width: 8vw;
+  height: fit-content;
+  border-radius: 12rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  font-size: 1vw;
+  padding-left: 0.8vw;
+  justify-content: center;
+  font-weight: 600;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.lang-button:hover {
+  background-color: var(--color-accent);
+  color: var(--color-background);
+}
+
+.lang-button + .lang-button {
+  margin-left: 1vw;
+}
+.lang-center-container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+.hbr-lang-title {
+  color: var(--color-accent);
+  font-size: 1.2rem;
+  margin: 5vh;
+  margin-bottom: 0;
+}
+
+/*Surevy page*/
+
+
+
+.survey-cont {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  background-color: var(--color-background); /* Consistent dark background */
+}
+
+.survey-cont-center {
+  margin-top: 10vh;
+  width: 80%; /* Slightly narrower for better readability */
+  max-width: 800px; /* Cap the width for larger screens */
+  height: 90%;
+  align-self: center; /* Center vertically within the container */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  color: var(--color-accent); /* White text for consistency */
+}
+
+.survey-cont-center h1 {
+  font-size: 3rem; /* Large, bold title */
+  color: var(--color-accent);
+  text-align: center;
+  margin-bottom: 3vh;
+  border-bottom: var(--color-accent) 2px solid; /* Consistent with homepage title underline */
+  padding-bottom: 1vh;
+
+}
+
+
+
+/* Formulario styling */
+.formulario {
+  width: 100%;
+  max-width: 450px; /* Further reduced width for better fit */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+  padding: 1vh 1vw; /* Minimal padding */
+  background-color: #252525;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+/* Wrapper for the questions */
+.formulario-questions-wrapper {
+  flex: 1; /* Take up available space */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribute questions evenly */
+  gap: 1vh; /* Minimal gap between questions */
+  padding: 1vh 0; /* Minimal padding */
+}
+
+/* Each question container */
+.formulario-question {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vh; /* Minimal gap */
+  padding: 1vh 0.8vw; /* Minimal padding */
+  background-color: #2f2f2f;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  flex: 1; /* Allow questions to stretch evenly */
+}
+
+
+
+.formulario-label {
+  color: var(--color-accent);
+  font-size: 0.9rem; /* Smaller font size */
+  font-weight: 600;
+  letter-spacing: 0.01rem;
+}
+
+.formulario-input,
+.formulario-textarea,
+.formulario-select {
+  padding: 0.5vh 0.5vw; /* Minimal padding */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.4rem;
+  background-color: #3a3a3a;
+  color: var(--color-accent);
+  font-size: 0.8rem; /* Smaller font size */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formulario-input:focus,
+.formulario-textarea:focus,
+.formulario-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 5px rgba(47, 187, 79, 0.3); /* Reduced glow */
+}
+
+.formulario-textarea {
+  min-height: 5vh; /* Much smaller height */
+  resize: none; /* Prevent resizing */
+}
+
+.formulario-select {
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 0.8rem; /* Smaller arrow */
+  padding-right: 2rem;
+  cursor: pointer;
+}
+
+.formulario-option {
+  background-color: #3a3a3a;
+  color: var(--color-accent);
+}
+
+.formulario-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4vh; /* Minimal gap */
+  margin-top: 0.3vh;
+}
+
+.formulario-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4vw;
+  color: var(--color-accent);
+  font-size: 0.8rem; /* Smaller font size */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.formulario-checkbox-label:hover {
+  color: var(--color-primary);
+}
+
+.formulario-checkbox {
+  accent-color: var(--color-primary);
+  width: 1rem; /* Smaller checkbox */
+  height: 1rem;
+  cursor: pointer;
+}
+
+.formulario-checkbox-text {
+  margin-left: 0.3vw;
+}
+
+.formulario-error {
+  color: #ff6666;
+  font-size: 0.7rem; /* Smaller font size */
+  margin-top: 0.2vh;
+  font-style: italic;
+}
+
+.formulario-submit {
+  align-self: center;
+  margin: 1vh 0; /* Minimal margin */
+  padding: 0.5vh 1.5vw; /* Smaller padding */
+  border: var(--color-accent) 2px solid;
+  border-radius: 10rem;
+  background-color: transparent;
+  color: var(--color-accent);
+  font-size: 0.9rem; /* Smaller font size */
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.formulario-submit:hover {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  transform: scale(1.03); /* Reduced scale effect */
+}
+
+.formulario-submit:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  border-color: #555555;
+  color: #555555;
+  transform: none;
 }

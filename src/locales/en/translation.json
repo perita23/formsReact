@@ -4,6 +4,8 @@
     "home.startButton": "Start Survey",
     "home.language.es": "Spanish",
     "home.language.en": "English",
+    "home.changelang":"Choose your language",
+    "home.description":"Participate in our surveys and help improve our services.",
     "form.nextButton": "Next",
     "form.selectOption": "Select an option",
     "form.error.minLength": "Must have at least {{min}} characters",
