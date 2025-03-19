@@ -1,7 +1,12 @@
-import { Link } from "react-router-dom";
+
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 import HomeSlider from "../components/HomeSlider";
 
 export const Home = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="home">
       <div className="home-top-row">
@@ -33,7 +38,13 @@ export const Home = () => {
           <HomeSlider/>
         </div>
         <div className="hbr-cont">
-          <div className="hbr-cont-img" ></div>
+          <div className="hbr-cont-img" >
+           <h1 dangerouslySetInnerHTML={{ __html: t('home.title') }} />
+      <button onClick={() => i18next.changeLanguage('es')}>{t('home.language.es')}</button>
+      <button onClick={() => i18next.changeLanguage('en')}>{t('home.language.en')}</button>
+      <p>{t('home.startPrompt')}</p>
+      <Link to="/survey">{t('home.startButton')}</Link>
+          </div>
         </div>
       </div>
     </div>
