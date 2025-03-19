@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Question } from '../types';
 import { useTranslation } from 'react-i18next';
+import { Question } from '../types';
 
 interface FormularioProps {
   questions: Question[];
-  onSubmit: (responses: Record<string, string | string[]>) => void; // Cambié number a string por los IDs
+  onSubmit: (responses: Record<string, string | string[]>) => void;
 }
 
 export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
@@ -12,38 +12,37 @@ export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const { t } = useTranslation();
 
-  // Validar una pregunta según sus restricciones y validaciones
   const validateQuestion = (question: Question, value: string | string[]): string | null => {
     const { restricciones, validacion } = question;
 
-    // Validar restricciones de longitud
     if (restricciones) {
       const length = typeof value === 'string' ? value.length : value.length;
       if (restricciones.min && length < restricciones.min) {
-        return `Debe tener al menos ${restricciones.min} caracteres`;
+        return t('form.error.minLength', { min: restricciones.min });
       }
       if (restricciones.max && length > restricciones.max) {
-        return `No puede exceder ${restricciones.max} caracteres`;
+        return t('form.error.maxLength', { max: restricciones.max });
       }
     }
 
-    // Validaciones específicas
     if (validacion) {
       if (validacion.formato === 'email' && typeof value === 'string') {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(value)) return 'Formato de email inválido';
+        if (!emailRegex.test(value)) return t('form.error.invalidEmail');
         if (validacion.dominio && !value.endsWith(validacion.dominio)) {
-          return `El email debe terminar en ${validacion.dominio}`;
+          return t('form.error.emailDomain', { domain: validacion.dominio });
         }
       }
       if (validacion.min_edad && typeof value === 'string') {
         const birthDate = new Date(value);
-        const age = (new Date().getFullYear() - birthDate.getFullYear());
-        if (age < validacion.min_edad) return `Debes tener al menos ${validacion.min_edad} años`;
+        const age = new Date().getFullYear() - birthDate.getFullYear();
+        if (age < validacion.min_edad) {
+          return t('form.error.minAge', { minAge: validacion.min_edad });
+        }
       }
       if (validacion.max_seleccionados && Array.isArray(value)) {
         if (value.length > validacion.max_seleccionados) {
-          return `Máximo ${validacion.max_seleccionados} opciones permitidas`;
+          return t('form.error.maxSelections', { max: validacion.max_seleccionados });
         }
       }
     }
@@ -65,7 +64,6 @@ export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
     const newErrors: Record<string, string> = {};
     let isValid = true;
 
-    // Validar todas las respuestas
     questions.forEach((question) => {
       const value = responses[question.id] || '';
       const error = validateQuestion(question, value);
@@ -78,7 +76,7 @@ export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
     setErrors(newErrors);
     if (isValid && Object.keys(responses).length === questions.length) {
       onSubmit(responses);
-      setResponses({}); // Reiniciar respuestas tras enviar
+      setResponses({});
     }
   };
 
@@ -86,9 +84,7 @@ export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
     <form onSubmit={handleSubmit}>
       {questions.map((question) => (
         <div key={question.id} className="question">
-          <label>{question.pregunta}</label>
-
-          {/* Text */}
+          <label>{t(question.pregunta)}</label>
           {question.tipo === 'text' && (
             <input
               type="text"
@@ -96,22 +92,18 @@ export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
               onChange={(e) => handleChange(question.id, e.target.value)}
             />
           )}
-
-          {/* Textarea */}
           {question.tipo === 'textarea' && (
             <textarea
               value={(responses[question.id] as string) || ''}
               onChange={(e) => handleChange(question.id, e.target.value)}
             />
           )}
-
-          {/* Select */}
           {question.tipo === 'select' && question.opciones && (
             <select
               value={(responses[question.id] as string) || ''}
               onChange={(e) => handleChange(question.id, e.target.value)}
             >
-              <option value="">Selecciona una opción</option>
+              <option value="">{t('form.selectOption')}</option>
               {question.opciones.map((option) =>
                 typeof option === 'string' ? (
                   <option key={option} value={option}>
@@ -127,8 +119,6 @@ export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
               )}
             </select>
           )}
-
-          {/* Check */}
           {question.tipo === 'check' && question.opciones && (
             <div>
               {question.opciones.map((option) => {
@@ -153,8 +143,6 @@ export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
               })}
             </div>
           )}
-
-          {/* Mostrar errores */}
           {errors[question.id] && <span className="error">{errors[question.id]}</span>}
         </div>
       ))}
@@ -162,7 +150,7 @@ export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
         type="submit"
         disabled={Object.keys(responses).length < questions.length || Object.values(errors).some((e) => e)}
       >
-        Siguiente
+        {t('form.nextButton')}
       </button>
     </form>
   );

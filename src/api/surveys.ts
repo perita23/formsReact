@@ -1,189 +1,157 @@
 import { Survey } from '../types';
 
-// Aqui iria la logica en caso de que se necesite hacer una peticion a un servidor
-// Como no hay back por el momento simulamos la respuesta con un array de encuestas
 export const getSurveys = (): Survey[] => [
   {
-    "id": 1, 
-    "titulo": "Cuestionario de Datos del Usuario",
+    "id": 1,
+    "titulo": "survey.1.title",
     "preguntas": [
       {
         "id": "nombre",
         "tipo": "text",
-        "pregunta": "¿Cuál es tu nombre?",
+        "pregunta": "survey.1.question.name",
         "respuesta": "",
-        "restricciones": {
-          "min": 3,
-          "max": 50
-        }
+        "restricciones": { "min": 3, "max": 50 }
       },
       {
         "id": "fecha_nacimiento",
         "tipo": "text",
-        "pregunta": "¿Cuál es tu fecha de nacimiento?",
+        "pregunta": "survey.1.question.birthdate",
         "respuesta": "",
-        "restricciones": {
-          "min": 1,
-          "max": 10
-        },
-        "validacion": {
-          "min_edad": 17
-        }
+        "restricciones": { "min": 1, "max": 10 },
+        "validacion": { "min_edad": 17 }
       },
       {
         "id": "email",
         "tipo": "text",
-        "pregunta": "¿Cuál es tu correo electrónico?",
+        "pregunta": "survey.1.question.email",
         "respuesta": "",
-        "restricciones": {
-          "min": 5,
-          "max": 100
-        },
-        "validacion": {
-          "formato": "email",
-          "dominio": "stucom.com"
-        }
+        "restricciones": { "min": 5, "max": 100 },
+        "validacion": { "formato": "email", "dominio": "stucom.com" }
       },
       {
         "id": "sexo",
         "tipo": "select",
-        "pregunta": "¿Cuál es tu sexo?",
+        "pregunta": "survey.1.question.gender",
         "respuesta": "",
         "opciones": ["Masculino", "Femenino", "Otro"]
       },
       {
         "id": "preferencias",
         "tipo": "check",
-        "pregunta": "¿Qué prefieres hacer en tu tiempo libre?",
+        "pregunta": "survey.1.question.preferences",
         "respuesta": "",
         "opciones": ["Leer", "Deportes", "Viajar", "Cine"]
       }
     ]
   },
   {
-    "id": 2, 
-    "titulo": "Cuestionario de Evaluación Académica",
+    "id": 2,
+    "titulo": "survey.2.title",
     "preguntas": [
       {
         "id": "comentarios",
         "tipo": "textarea",
-        "pregunta": "¿Qué mejorarías en el curso?",
+        "pregunta": "survey.2.question.improvements",
         "respuesta": "El contenido del curso está bien, pero sería útil más ejemplos prácticos.",
-        "restricciones": {
-          "min": 15,
-          "max": 250
-        }
+        "restricciones": { "min": 15, "max": 250 }
       },
       {
         "id": "satisfaccion",
         "tipo": "select",
-        "pregunta": "¿Qué tan satisfecho estás con el contenido del curso?",
+        "pregunta": "survey.2.question.satisfaction",
         "respuesta": "4",
         "opciones": ["1", "2", "3", "4", "5"]
       },
       {
         "id": "asistencia",
         "tipo": "check",
-        "pregunta": "¿Asististe a todas las clases?",
+        "pregunta": "survey.2.question.attendance",
         "respuesta": "no",
         "opciones": ["sí", "no"]
       },
       {
         "id": "horarios",
         "tipo": "check",
-        "pregunta": "¿Cuáles horarios prefieres para las clases? (Selecciona hasta 2 opciones)",
+        "pregunta": "survey.2.question.schedule",
         "respuesta": [],
         "opciones": [
           "Lunes 9:00 AM - 11:00 AM",
           "Martes 3:00 PM - 5:00 PM",
-          "Miércoles 10:00 AM - 12:00 PM",
+          "Miércoles 10:00 AM - 12:00 AM",
           "Jueves 1:00 PM - 3:00 PM",
           "Viernes 4:00 PM - 6:00 PM"
         ],
-        "validacion": {
-          "max_seleccionados": 2
-        }
+        "validacion": { "max_seleccionados": 2 }
       }
     ]
   },
   {
-    "id": 3, 
-    "titulo": "Encuesta de Preferencias en Tecnología",
+    "id": 3,
+    "titulo": "survey.3.title",
     "preguntas": [
       {
         "id": "comentarios",
         "tipo": "textarea",
-        "pregunta": "¿Qué tecnología te gustaría aprender en el futuro?",
+        "pregunta": "survey.3.question.techInterest",
         "respuesta": "Me gustaría aprender sobre inteligencia artificial y machine learning.",
-        "restricciones": {
-          "min": 20,
-          "max": 200
-        }
+        "restricciones": { "min": 20, "max": 200 }
       },
       {
         "id": "sistema_operativo",
         "tipo": "select",
-        "pregunta": "¿Qué sistema operativo prefieres usar?",
+        "pregunta": "survey.3.question.osPreference",
         "respuesta": "Linux",
         "opciones": ["Windows", "Linux", "MacOS"]
       },
       {
         "id": "productos",
         "tipo": "check",
-        "pregunta": "¿Qué dispositivos usas regularmente? (Selecciona hasta 2 opciones)",
+        "pregunta": "survey.3.question.devices",
         "respuesta": ["smartphone"],
         "opciones": ["smartphone", "laptop", "tablet", "smartwatch"],
-        "validacion": {
-          "max_seleccionados": 2
-        }
+        "validacion": { "max_seleccionados": 2 }
       },
       {
         "id": "tiempo",
         "tipo": "select",
-        "pregunta": "¿Cuántas horas a la semana dedicas a aprender sobre tecnología?",
+        "pregunta": "survey.3.question.techTime",
         "respuesta": "5",
         "opciones": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
       }
     ]
   },
   {
-    "id": 4, 
-    "titulo": "Encuesta de Preferencias de Cine",
+    "id": 4,
+    "titulo": "survey.4.title",
     "preguntas": [
       {
         "id": "comentarios",
         "tipo": "textarea",
-        "pregunta": "¿Qué género de películas prefieres?",
+        "pregunta": "survey.4.question.movieGenre",
         "respuesta": "Acción, ciencia ficción y comedia.",
-        "restricciones": {
-          "min": 10,
-          "max": 150
-        }
+        "restricciones": { "min": 10, "max": 150 }
       },
       {
         "id": "favorito",
         "tipo": "select",
-        "pregunta": "¿Cuál es tu película favorita?",
+        "pregunta": "survey.4.question.favoriteMovie",
         "respuesta": "Inception",
         "opciones": ["Inception", "The Matrix", "Avengers", "Titanic"]
       },
       {
         "id": "vista",
         "tipo": "check",
-        "pregunta": "¿Has visto alguna de las siguientes películas?",
+        "pregunta": "survey.4.question.moviesSeen",
         "respuesta": "sí",
         "opciones": ["Inception", "The Matrix", "Avengers", "Titanic"]
       },
       {
         "id": "frecuencia",
         "tipo": "select",
-        "pregunta": "¿Con qué frecuencia ves películas?",
+        "pregunta": "survey.4.question.movieFrequency",
         "respuesta": "4",
         "opciones": [
-          {
-            "grupo": "Opción 1-5 veces al mes",
-            "valores": ["1", "2", "3", "4", "5"]
-          }
+          { "grupo": "Opción 1-5 veces al mes", "valores": ["1", "2", "3", "4", "5"] }
         ]
       }
     ]
