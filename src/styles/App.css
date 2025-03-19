@@ -77,20 +77,19 @@ body {
   border-left: var(--color-accent) 2px solid;
 }
 
-.hbr-1-cont{
+.hbr-1-cont {
   display: flex;
   flex-direction: column;
-
 }
 
-.hbr-cont-text{
+.hbr-cont-text {
   color: var(--color-accent);
   margin: 5vh;
   margin-bottom: 0;
   font-size: 1.2rem;
 }
 
-.button{
+.button {
   margin: 5vh;
   margin-top: 1vh;
   align-self: flex-end;
@@ -135,6 +134,26 @@ body {
   color: var(--color-background);
 }
 
-.hbr-cont-img{
+.hbr-cont-img {
   
+}
+
+/*Intro*/
+.intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  z-index: 9999;
+}
+
+.intro-overlay h1 {
+  color: #fff;
+  font-size: 4rem;
+  font-family: sans-serif; /* Cambia la fuente si quieres */
 }
