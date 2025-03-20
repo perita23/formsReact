@@ -30,6 +30,8 @@ body {
   font-size: 2vw;
   margin-right: 1vw;
   color: var(--color-accent);
+  text-decoration: none;
+  font-weight: bold;
 }
 
 /*HOME PAGE CSS*/

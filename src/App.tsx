@@ -5,6 +5,7 @@ import { Home } from "./pages/Home";
 import { Result } from "./pages/Result";
 import { SurveyPage } from "./pages/SurveyPage";
 import "./styles/App.css";
+import { Link } from "react-router-dom";
 
 /**
  * Componente funcional que maneja las rutas animadas de la aplicación.
@@ -118,16 +119,7 @@ export const App = () => {
               transition={{ duration: 0.5, ease: "easeInOut" }} // Transición de 0.5 segundos
             >
               <div className="logo-cont"> {/* Contenedor del logo */}
-                Quest {/* Texto del logo */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg" // Namespace del SVG
-                  height="32px" // Altura del ícono
-                  viewBox="0 -1080 960 960" // Área visible del SVG
-                  width="32px" // Ancho del ícono
-                  fill="#ffffff" // Relleno blanco
-                >
-                  <path d="M440-160v-487L216-423l-56-57 320-320 320 320-56 57-224-224v487h-80Z" /> {/* Forma de flecha */}
-                </svg>
+                <Link className="logo-cont" to={"/"}> Quest Up </Link> {/* Texto del logo */}
               </div>
               <AnimatedRoutes /> {/* Renderiza las rutas animadas */}
             </motion.div>
