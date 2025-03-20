@@ -1,5 +1,5 @@
 import { Survey } from '../types';
-
+// Simulacion de una peticion a una API real
 export const getSurveys = (): Survey[] => [
   {
     id: 1,
