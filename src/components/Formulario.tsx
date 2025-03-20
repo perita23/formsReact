@@ -1,18 +1,27 @@
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { Question } from "../types";
+import { useState, useEffect } from 'react'; // Añadimos useEffect
+import { useTranslation } from 'react-i18next';
+import { Question } from '../types';
 
 interface FormularioProps {
   questions: Question[];
   onSubmit: (responses: Record<string, string | string[]>) => void;
+  initialResponses?: Record<string, string | string[]>; // Nuevo prop opcional
 }
 
-export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
-  const [responses, setResponses] = useState<Record<string, string | string[]>>(
-    {}
-  );
+export const Formulario = ({ questions, onSubmit, initialResponses = {} }: FormularioProps) => {
+  const [responses, setResponses] = useState<Record<string, string | string[]>>(initialResponses);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const { t } = useTranslation();
+
+  // Actualizar responses si initialResponses cambia (por ejemplo, al cambiar de formulario)
+  useEffect(() => {
+    setResponses(initialResponses);
+  }, [initialResponses]);
+
+  // Actualizar responses si initialResponses cambia (por ejemplo, al cambiar de formulario)
+  useEffect(() => {
+    setResponses(initialResponses);
+  }, [initialResponses]);
 
   // Validar una pregunta según sus restricciones y validaciones
   const validateQuestion = (

@@ -37,9 +37,9 @@ export const Home = () => {
           <HomeSlider />
         </div>
         <div className="hbr-cont">
-        <h2 className="hbr-lang-title">{t("home.changelang")}</h2>
+          <h2 className="hbr-lang-title">{t("home.changelang")}</h2>
           <div className="hbr-cont-lang">
-            
+
             <div className="lang-center-container">
               <button
                 className="lang-button"

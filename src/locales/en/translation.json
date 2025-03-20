@@ -2,6 +2,7 @@
     "home.title": "Welcome <br>to the Surveys",
     "home.startPrompt": "Click to start:",
     "home.startButton": "Start Survey",
+    "home.continueButton": "Continue Survey",
     "home.language.es": "Spanish",
     "home.language.en": "English",
     "home.changelang":"Choose your language",
