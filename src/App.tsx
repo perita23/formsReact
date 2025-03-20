@@ -1,15 +1,11 @@
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Home } from './pages/Home';
-import { SurveyPage } from './pages/SurveyPage';
-import './styles/App.css';
-import { Result } from './pages/Result';
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import { Home } from "./pages/Home";
-import { SurveyPage } from "./pages/SurveyPage";
-import "./styles/App.css";
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { Home } from './pages/Home';
+import { Result } from "./pages/Result";
+import { SurveyPage } from './pages/SurveyPage';
+import './styles/App.css';
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -43,7 +39,21 @@ const AnimatedRoutes = () => {
             </motion.div>
           }
         />
+        <Route
+          path="/result"
+          element={
+            <motion.div
+              initial={{ opacity: 0, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            >
+              <Result/>
+            </motion.div>
+          }
+        />
       </Routes>
+      
     </AnimatePresence>
   );
 };

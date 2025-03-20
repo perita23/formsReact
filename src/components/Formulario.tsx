@@ -1,19 +1,27 @@
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // Añadimos useEffect
 import { useTranslation } from 'react-i18next';
 import { Question } from '../types';
 
 interface FormularioProps {
   questions: Question[];
   onSubmit: (responses: Record<string, string | string[]>) => void;
+  initialResponses?: Record<string, string | string[]>; // Nuevo prop opcional
 }
 
-export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
-  const [responses, setResponses] = useState<Record<string, string | string[]>>(
-    {}
-  );
+export const Formulario = ({ questions, onSubmit, initialResponses = {} }: FormularioProps) => {
+  const [responses, setResponses] = useState<Record<string, string | string[]>>(initialResponses);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const { t } = useTranslation();
+
+  // Actualizar responses si initialResponses cambia (por ejemplo, al cambiar de formulario)
+  useEffect(() => {
+    setResponses(initialResponses);
+  }, [initialResponses]);
+
+  // Actualizar responses si initialResponses cambia (por ejemplo, al cambiar de formulario)
+  useEffect(() => {
+    setResponses(initialResponses);
+  }, [initialResponses]);
 
   // Validar una pregunta según sus restricciones y validaciones
   const validateQuestion = (
@@ -25,31 +33,33 @@ export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
     if (restricciones) {
       const length = typeof value === "string" ? value.length : value.length;
       if (restricciones.min && length < restricciones.min) {
-        return t('form.error.minLength', { min: restricciones.min });
+        return t("form.error.minLength", { min: restricciones.min });
       }
       if (restricciones.max && length > restricciones.max) {
-        return t('form.error.maxLength', { max: restricciones.max });
+        return t("form.error.maxLength", { max: restricciones.max });
       }
     }
 
     if (validacion) {
       if (validacion.formato === "email" && typeof value === "string") {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(value)) return t('form.error.invalidEmail');
+        if (!emailRegex.test(value)) return t("form.error.invalidEmail");
         if (validacion.dominio && !value.endsWith(validacion.dominio)) {
-          return t('form.error.emailDomain', { domain: validacion.dominio });
+          return t("form.error.emailDomain", { domain: validacion.dominio });
         }
       }
       if (validacion.min_edad && typeof value === "string") {
         const birthDate = new Date(value);
         const age = new Date().getFullYear() - birthDate.getFullYear();
         if (age < validacion.min_edad) {
-          return t('form.error.minAge', { minAge: validacion.min_edad });
+          return t("form.error.minAge", { minAge: validacion.min_edad });
         }
       }
       if (validacion.max_seleccionados && Array.isArray(value)) {
         if (value.length > validacion.max_seleccionados) {
-          return t('form.error.maxSelections', { max: validacion.max_seleccionados });
+          return t("form.error.maxSelections", {
+            max: validacion.max_seleccionados,
+          });
         }
       }
     }
@@ -88,39 +98,46 @@ export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="formulario" onSubmit={handleSubmit}>
       {questions.map((question) => (
-        <div key={question.id} className="question">
-          <label>{t(question.pregunta)}</label>
-          {question.tipo === 'text' && (
+        <div key={question.id} className="formulario-question">
+          <label className="formulario-label">{t(question.pregunta)}</label>
+          {question.tipo === "text" && (
             <input
               type="text"
+              className="formulario-input"
               value={(responses[question.id] as string) || ""}
               onChange={(e) => handleChange(question.id, e.target.value)}
             />
           )}
-
-          {question.tipo === 'textarea' && (
+          {question.tipo === "textarea" && (
             <textarea
+              className="formulario-textarea"
               value={(responses[question.id] as string) || ""}
               onChange={(e) => handleChange(question.id, e.target.value)}
             />
           )}
-          {question.tipo === 'select' && question.opciones && (
-
+          {question.tipo === "select" && question.opciones && (
             <select
+              className="formulario-select"
               value={(responses[question.id] as string) || ""}
               onChange={(e) => handleChange(question.id, e.target.value)}
             >
-              <option value="">{t('form.selectOption')}</option>
+              <option value="" className="formulario-option">
+                {t("form.selectOption")}
+              </option>
               {question.opciones.map((option) =>
                 typeof option === "string" ? (
-                  <option key={option} value={option}>
+                  <option
+                    key={option}
+                    value={option}
+                    className="formulario-option"
+                  >
                     {option}
                   </option>
                 ) : (
                   option.valores.map((val) => (
-                    <option key={val} value={val}>
+                    <option key={val} value={val} className="formulario-option">
                       {val}
                     </option>
                   ))
@@ -128,16 +145,16 @@ export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
               )}
             </select>
           )}
-          {question.tipo === 'check' && question.opciones && (
-
-            <div>
+          {question.tipo === "check" && question.opciones && (
+            <div className="formulario-checkbox-group">
               {question.opciones.map((option) => {
                 const optValue =
                   typeof option === "string" ? option : option.grupo;
                 return (
-                  <label key={optValue}>
+                  <label key={optValue} className="formulario-checkbox-label">
                     <input
                       type="checkbox"
+                      className="formulario-checkbox"
                       value={optValue}
                       checked={
                         (responses[question.id] as string[])?.includes(
@@ -153,24 +170,26 @@ export const Formulario = ({ questions, onSubmit }: FormularioProps) => {
                         handleChange(question.id, updated);
                       }}
                     />
-                    {optValue}
+                    <span className="formulario-checkbox-text">{optValue}</span>
                   </label>
                 );
               })}
             </div>
           )}
-          {errors[question.id] && <span className="error">{errors[question.id]}</span>}
-
+          {errors[question.id] && (
+            <span className="formulario-error">{errors[question.id]}</span>
+          )}
         </div>
       ))}
       <button
         type="submit"
+        className="formulario-submit"
         disabled={
           Object.keys(responses).length < questions.length ||
           Object.values(errors).some((e) => e)
         }
       >
-        {t('form.nextButton')}
+        {t("form.nextButton")}
       </button>
     </form>
   );
