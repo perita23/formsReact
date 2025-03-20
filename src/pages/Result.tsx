@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 export const Result = () => {
@@ -40,6 +41,10 @@ export const Result = () => {
           </ul>
         </div>
       ))}
+      <Link className="button" to="/survey">
+            {t("result.returnToSurvey")}
+            
+          </Link>
       <button onClick={handleRestart}> { t('result.surveyRestart')} </button>
     </div>
   );
