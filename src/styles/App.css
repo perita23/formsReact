@@ -1,3 +1,4 @@
+@import "react-slideshow-image/dist/styles.css";
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -10,7 +11,6 @@
   --color-text: #ffffff;
 }
 
-@import "react-slideshow-image/dist/styles.css";
 
 * {
   margin: 0;

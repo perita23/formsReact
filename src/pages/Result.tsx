@@ -61,6 +61,10 @@ export const Result = () => {
           </svg>{" "}
         </h4>
       </div>
+      <Link className="button" to="/survey">
+        {t("result.returnToSurvey")}
+      </Link>
+      <button onClick={handleRestart}> {t('result.surveyRestart')} </button>
     </div>
   );
 };

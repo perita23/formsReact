@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'; // Añadimos useEffect
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Question } from '../types';
 
 interface FormularioProps {
   questions: Question[];
   onSubmit: (responses: Record<string, string | string[]>) => void;
-  initialResponses?: Record<string, string | string[]>; // Nuevo prop opcional
+  initialResponses?: Record<string, string | string[]>;
 }
 
 export const Formulario = ({ questions, onSubmit, initialResponses = {} }: FormularioProps) => {
@@ -13,53 +13,41 @@ export const Formulario = ({ questions, onSubmit, initialResponses = {} }: Formu
   const [errors, setErrors] = useState<Record<string, string>>({});
   const { t } = useTranslation();
 
-  // Actualizar responses si initialResponses cambia (por ejemplo, al cambiar de formulario)
   useEffect(() => {
     setResponses(initialResponses);
   }, [initialResponses]);
 
-  // Actualizar responses si initialResponses cambia (por ejemplo, al cambiar de formulario)
-  useEffect(() => {
-    setResponses(initialResponses);
-  }, [initialResponses]);
-
-  // Validar una pregunta según sus restricciones y validaciones
-  const validateQuestion = (
-    question: Question,
-    value: string | string[]
-  ): string | null => {
+  const validateQuestion = (question: Question, value: string | string[]): string | null => {
     const { restricciones, validacion } = question;
 
     if (restricciones) {
-      const length = typeof value === "string" ? value.length : value.length;
+      const length = typeof value === 'string' ? value.length : value.length;
       if (restricciones.min && length < restricciones.min) {
-        return t("form.error.minLength", { min: restricciones.min });
+        return t('form.error.minLength', { min: restricciones.min });
       }
       if (restricciones.max && length > restricciones.max) {
-        return t("form.error.maxLength", { max: restricciones.max });
+        return t('form.error.maxLength', { max: restricciones.max });
       }
     }
 
     if (validacion) {
-      if (validacion.formato === "email" && typeof value === "string") {
+      if (validacion.formato === 'email' && typeof value === 'string') {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(value)) return t("form.error.invalidEmail");
+        if (!emailRegex.test(value)) return t('form.error.invalidEmail');
         if (validacion.dominio && !value.endsWith(validacion.dominio)) {
-          return t("form.error.emailDomain", { domain: validacion.dominio });
+          return t('form.error.emailDomain', { domain: validacion.dominio });
         }
       }
-      if (validacion.min_edad && typeof value === "string") {
+      if (validacion.min_edad && typeof value === 'string') {
         const birthDate = new Date(value);
         const age = new Date().getFullYear() - birthDate.getFullYear();
         if (age < validacion.min_edad) {
-          return t("form.error.minAge", { minAge: validacion.min_edad });
+          return t('form.error.minAge', { minAge: validacion.min_edad });
         }
       }
       if (validacion.max_seleccionados && Array.isArray(value)) {
         if (value.length > validacion.max_seleccionados) {
-          return t("form.error.maxSelections", {
-            max: validacion.max_seleccionados,
-          });
+          return t('form.error.maxSelections', { max: validacion.max_seleccionados });
         }
       }
     }
@@ -72,7 +60,7 @@ export const Formulario = ({ questions, onSubmit, initialResponses = {} }: Formu
     const question = questions.find((q) => q.id === questionId);
     if (question) {
       const error = validateQuestion(question, value);
-      setErrors((prev) => ({ ...prev, [questionId]: error || "" }));
+      setErrors((prev) => ({ ...prev, [questionId]: error || '' }));
     }
   };
 
@@ -82,7 +70,7 @@ export const Formulario = ({ questions, onSubmit, initialResponses = {} }: Formu
     let isValid = true;
 
     questions.forEach((question) => {
-      const value = responses[question.id] || "";
+      const value = responses[question.id] || '';
       const error = validateQuestion(question, value);
       if (error) {
         newErrors[question.id] = error;
@@ -102,75 +90,65 @@ export const Formulario = ({ questions, onSubmit, initialResponses = {} }: Formu
       {questions.map((question) => (
         <div key={question.id} className="formulario-question">
           <label className="formulario-label">{t(question.pregunta)}</label>
-          {question.tipo === "text" && (
+          {question.tipo === 'text' && (
             <input
               type="text"
               className="formulario-input"
-              value={(responses[question.id] as string) || ""}
+              value={(responses[question.id] as string) || ''}
               onChange={(e) => handleChange(question.id, e.target.value)}
             />
           )}
-          {question.tipo === "textarea" && (
+          {question.tipo === 'textarea' && (
             <textarea
               className="formulario-textarea"
-              value={(responses[question.id] as string) || ""}
+              value={(responses[question.id] as string) || ''}
               onChange={(e) => handleChange(question.id, e.target.value)}
             />
           )}
-          {question.tipo === "select" && question.opciones && (
+          {question.tipo === 'select' && question.opciones && (
             <select
               className="formulario-select"
-              value={(responses[question.id] as string) || ""}
+              value={(responses[question.id] as string) || ''}
               onChange={(e) => handleChange(question.id, e.target.value)}
             >
               <option value="" className="formulario-option">
-                {t("form.selectOption")}
+                {t('form.selectOption')}
               </option>
               {question.opciones.map((option) =>
-                typeof option === "string" ? (
-                  <option
-                    key={option}
-                    value={option}
-                    className="formulario-option"
-                  >
-                    {option}
+                typeof option === 'string' ? (
+                  <option key={option} value={option} className="formulario-option">
+                    {t(option)}
                   </option>
                 ) : (
                   option.valores.map((val) => (
                     <option key={val} value={val} className="formulario-option">
-                      {val}
+                      {t(val)}
                     </option>
                   ))
                 )
               )}
             </select>
           )}
-          {question.tipo === "check" && question.opciones && (
+          {question.tipo === 'check' && question.opciones && (
             <div className="formulario-checkbox-group">
               {question.opciones.map((option) => {
-                const optValue =
-                  typeof option === "string" ? option : option.grupo;
+                const optValue = typeof option === 'string' ? option : option.grupo;
                 return (
                   <label key={optValue} className="formulario-checkbox-label">
                     <input
                       type="checkbox"
                       className="formulario-checkbox"
                       value={optValue}
-                      checked={
-                        (responses[question.id] as string[])?.includes(
-                          optValue
-                        ) || false
-                      }
+                      checked={(responses[question.id] as string[])?.includes(optValue) || false}
                       onChange={(e) => {
-                        const current =
-                          (responses[question.id] as string[]) || [];
+                        const current = (responses[question.id] as string[]) || [];
                         const updated = e.target.checked
                           ? [...current, optValue]
                           : current.filter((v) => v !== optValue);
                         handleChange(question.id, updated);
                       }}
                     />
-                    <span className="formulario-checkbox-text">{optValue}</span>
+                    <span className="formulario-checkbox-text">{t(optValue)}</span>
                   </label>
                 );
               })}
@@ -189,7 +167,7 @@ export const Formulario = ({ questions, onSubmit, initialResponses = {} }: Formu
           Object.values(errors).some((e) => e)
         }
       >
-        {t("form.nextButton")}
+        {t('form.nextButton')}
       </button>
     </form>
   );
