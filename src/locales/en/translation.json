@@ -17,6 +17,7 @@
     "form.error.maxSelections": "Maximum {{max}} options allowed",
     "survey.progress": "Progress: {{current}} of {{total}}",
     "survey.previousButton": "Previous",
+    "result.returnToSurvey": "Go back to surveys",
     "result.title": "Survey Results",
     "result.noResponses": "No responses saved",
     "result.surveyLabel": "Survey {{id}}",
