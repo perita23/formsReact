@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { Formulario } from '../components/Formulario';
-import { getSurveys } from '../api/surveys';
-import { Survey } from '../types';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { getSurveys } from '../api/surveys';
+import { Formulario } from '../components/Formulario';
+import { Survey } from '../types';
 
 export const SurveyPage = () => {
   const { t } = useTranslation();
@@ -56,13 +56,12 @@ export const SurveyPage = () => {
         />
         <div className="survey-navigation">
           {currentSurveyIndex > 0 && (
-            <button
-              type="button"
+            <h4
               className="survey-previous-btn"
               onClick={handlePrevious}
             >
               {t('survey.previousButton')}
-            </button>
+            </h4>
           )}
           <p>
             {t('survey.progress', {

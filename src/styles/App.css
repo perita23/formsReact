@@ -506,6 +506,12 @@ body {
   fill: var(--color-background);
   transition: 0.3s;
 }
+
+.result-buttons{
+  display: flex;
+  width: 56%;
+  justify-content: space-between;
+}
 /* Survey ID title */
 .result-survey h2 {
   color: var(--color-accent);
@@ -517,7 +523,28 @@ body {
   padding-bottom: 0.3vh;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+.survey-back-buttons{
+  border: 2px solid var(--color-accent);
+  border-radius: 26px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: fit-content;
+  height: fit-content;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  color: var(--color-accent);
+  text-decoration: none;  
+}
 
+.survey-back-buttons:hover{
+  background-color: var(--color-accent);
+  color: var(--color-background);
+  transition: 0.3s;
+}
 /* Responses list */
 .result-responses {
   list-style: none;
@@ -586,21 +613,25 @@ body {
   align-items: center;
   gap: 20px;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .survey-previous-btn,
 .survey-next-btn {
   padding: 8px 16px;
-  background-color: #007bff;
-  color: white;
+  border-radius: 26px !important;
+  border: 2px solid var(--color-accent) !important;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .survey-previous-btn:hover,
 .survey-next-btn:hover {
-  background-color: #0056b3;
+  background-color: var(--color-accent);
+  color: var(--color-background);
+  transition: 0.3s;
 }
 
 .survey-next-btn:disabled {
