@@ -16,6 +16,7 @@
     "form.error.minAge": "Debes tener al menos {{minAge}} años",
     "form.error.maxSelections": "Máximo {{max}} opciones permitidas",
     "survey.progress": "Progreso: {{current}} de {{total}}",
+    "survey.previousButton": "Anterior",
     "result.title": "Resultados de las encuestas",
     "result.noResponses": "No hay respuestas guardadas",
     "result.surveyLabel": "Encuesta {{id}}",

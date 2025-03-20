@@ -9,11 +9,14 @@
   --color-background: #1c1c1c;
   --color-text: #ffffff;
 }
+
 @import "react-slideshow-image/dist/styles.css";
+
 * {
   margin: 0;
   padding: 0;
 }
+
 body {
   width: 100%;
   height: 100%;
@@ -28,6 +31,7 @@ body {
   margin-right: 1vw;
   color: var(--color-accent);
 }
+
 /*HOME PAGE CSS*/
 
 .home {
@@ -36,6 +40,7 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .home-top-row {
   height: 50%;
   display: flex;
@@ -61,6 +66,7 @@ body {
   0% {
     background-position: 0% 50%;
   }
+
   100% {
     background-position: 200% 50%;
   }
@@ -70,11 +76,13 @@ body {
   display: flex;
   height: 50%;
 }
+
 .hbr-cont {
   width: calc(100% / 3);
   height: 100%;
 }
-.hbr-cont + .hbr-cont {
+
+.hbr-cont+.hbr-cont {
   border-left: var(--color-accent) 2px solid;
 }
 
@@ -152,7 +160,8 @@ body {
 .intro-overlay h1 {
   color: #fff;
   font-size: 4rem;
-  font-family: sans-serif; /* Cambia la fuente si quieres */
+  font-family: sans-serif;
+  /* Cambia la fuente si quieres */
 }
 
 .hbr-cont-lang {
@@ -179,19 +188,22 @@ body {
   transition: 0.3s;
   cursor: pointer;
 }
+
 .lang-button:hover {
   background-color: var(--color-accent);
   color: var(--color-background);
 }
 
-.lang-button + .lang-button {
+.lang-button+.lang-button {
   margin-left: 1vw;
 }
+
 .lang-center-container {
   display: flex;
   justify-content: center;
   height: 100%;
 }
+
 .hbr-lang-title {
   color: var(--color-accent);
   font-size: 1.2rem;
@@ -207,28 +219,37 @@ body {
   width: 100%;
   height: 100vh;
   display: flex;
-  justify-content: center; /* Center the content horizontally */
-  background-color: var(--color-background); /* Consistent dark background */
+  justify-content: center;
+  /* Center the content horizontally */
+  background-color: var(--color-background);
+  /* Consistent dark background */
 }
 
 .survey-cont-center {
   margin-top: 10vh;
-  width: 80%; /* Slightly narrower for better readability */
-  max-width: 800px; /* Cap the width for larger screens */
+  width: 80%;
+  /* Slightly narrower for better readability */
+  max-width: 800px;
+  /* Cap the width for larger screens */
   height: 90%;
-  align-self: center; /* Center vertically within the container */
+  align-self: center;
+  /* Center vertically within the container */
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center content horizontally */
-  color: var(--color-accent); /* White text for consistency */
+  align-items: center;
+  /* Center content horizontally */
+  color: var(--color-accent);
+  /* White text for consistency */
 }
 
 .survey-cont-center h1 {
-  font-size: 3rem; /* Large, bold title */
+  font-size: 3rem;
+  /* Large, bold title */
   color: var(--color-accent);
   text-align: center;
   margin-bottom: 3vh;
-  border-bottom: var(--color-accent) 2px solid; /* Consistent with homepage title underline */
+  border-bottom: var(--color-accent) 2px solid;
+  /* Consistent with homepage title underline */
   padding-bottom: 1vh;
 
 }
@@ -238,12 +259,15 @@ body {
 /* Formulario styling */
 .formulario {
   width: 100%;
-  max-width: 450px; /* Further reduced width for better fit */
+  max-width: 450px;
+  /* Further reduced width for better fit */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Full viewport height */
-  padding: 1vh 1vw; /* Minimal padding */
+  height: 100vh;
+  /* Full viewport height */
+  padding: 1vh 1vw;
+  /* Minimal padding */
   background-color: #252525;
   border-radius: 1rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -252,31 +276,39 @@ body {
 
 /* Wrapper for the questions */
 .formulario-questions-wrapper {
-  flex: 1; /* Take up available space */
+  flex: 1;
+  /* Take up available space */
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Distribute questions evenly */
-  gap: 1vh; /* Minimal gap between questions */
-  padding: 1vh 0; /* Minimal padding */
+  justify-content: space-between;
+  /* Distribute questions evenly */
+  gap: 1vh;
+  /* Minimal gap between questions */
+  padding: 1vh 0;
+  /* Minimal padding */
 }
 
 /* Each question container */
 .formulario-question {
   display: flex;
   flex-direction: column;
-  gap: 0.5vh; /* Minimal gap */
-  padding: 1vh 0.8vw; /* Minimal padding */
+  gap: 0.5vh;
+  /* Minimal gap */
+  padding: 1vh 0.8vw;
+  /* Minimal padding */
   background-color: #2f2f2f;
   border-radius: 0.5rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  flex: 1; /* Allow questions to stretch evenly */
+  flex: 1;
+  /* Allow questions to stretch evenly */
 }
 
 
 
 .formulario-label {
   color: var(--color-accent);
-  font-size: 0.9rem; /* Smaller font size */
+  font-size: 0.9rem;
+  /* Smaller font size */
   font-weight: 600;
   letter-spacing: 0.01rem;
 }
@@ -284,12 +316,14 @@ body {
 .formulario-input,
 .formulario-textarea,
 .formulario-select {
-  padding: 0.5vh 0.5vw; /* Minimal padding */
+  padding: 0.5vh 0.5vw;
+  /* Minimal padding */
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.4rem;
   background-color: #3a3a3a;
   color: var(--color-accent);
-  font-size: 0.8rem; /* Smaller font size */
+  font-size: 0.8rem;
+  /* Smaller font size */
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -298,12 +332,15 @@ body {
 .formulario-select:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 5px rgba(47, 187, 79, 0.3); /* Reduced glow */
+  box-shadow: 0 0 5px rgba(47, 187, 79, 0.3);
+  /* Reduced glow */
 }
 
 .formulario-textarea {
-  min-height: 5vh; /* Much smaller height */
-  resize: none; /* Prevent resizing */
+  min-height: 5vh;
+  /* Much smaller height */
+  resize: none;
+  /* Prevent resizing */
 }
 
 .formulario-select {
@@ -311,7 +348,8 @@ body {
   background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
   background-repeat: no-repeat;
   background-position: right 0.5rem center;
-  background-size: 0.8rem; /* Smaller arrow */
+  background-size: 0.8rem;
+  /* Smaller arrow */
   padding-right: 2rem;
   cursor: pointer;
 }
@@ -324,7 +362,8 @@ body {
 .formulario-checkbox-group {
   display: flex;
   flex-direction: column;
-  gap: 0.4vh; /* Minimal gap */
+  gap: 0.4vh;
+  /* Minimal gap */
   margin-top: 0.3vh;
 }
 
@@ -333,7 +372,8 @@ body {
   align-items: center;
   gap: 0.4vw;
   color: var(--color-accent);
-  font-size: 0.8rem; /* Smaller font size */
+  font-size: 0.8rem;
+  /* Smaller font size */
   cursor: pointer;
   transition: color 0.3s ease;
 }
@@ -344,7 +384,8 @@ body {
 
 .formulario-checkbox {
   accent-color: var(--color-primary);
-  width: 1rem; /* Smaller checkbox */
+  width: 1rem;
+  /* Smaller checkbox */
   height: 1rem;
   cursor: pointer;
 }
@@ -355,20 +396,24 @@ body {
 
 .formulario-error {
   color: #ff6666;
-  font-size: 0.7rem; /* Smaller font size */
+  font-size: 0.7rem;
+  /* Smaller font size */
   margin-top: 0.2vh;
   font-style: italic;
 }
 
 .formulario-submit {
   align-self: center;
-  margin: 1vh 0; /* Minimal margin */
-  padding: 0.5vh 1.5vw; /* Smaller padding */
+  margin: 1vh 0;
+  /* Minimal margin */
+  padding: 0.5vh 1.5vw;
+  /* Smaller padding */
   border: var(--color-accent) 2px solid;
   border-radius: 10rem;
   background-color: transparent;
   color: var(--color-accent);
-  font-size: 0.9rem; /* Smaller font size */
+  font-size: 0.9rem;
+  /* Smaller font size */
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
@@ -377,7 +422,8 @@ body {
 .formulario-submit:hover {
   background-color: var(--color-primary);
   color: var(--color-background);
-  transform: scale(1.03); /* Reduced scale effect */
+  transform: scale(1.03);
+  /* Reduced scale effect */
 }
 
 .formulario-submit:disabled {
@@ -392,23 +438,29 @@ body {
 /* Result page container */
 .result {
   width: 100%;
-  height: 100vh; /* Fixed height to viewport */
+  height: 100vh;
+  /* Fixed height to viewport */
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: var(--color-background);
-  padding: 1vh 1vw; /* Reduced padding */
+  padding: 1vh 1vw;
+  /* Reduced padding */
   box-sizing: border-box;
-  overflow-y: scroll; /* Prevent scrolling */
+  overflow-y: scroll;
+  /* Prevent scrolling */
 }
 
 /* Result title */
 .result h1 {
-  font-size: 2.5rem; /* Slightly smaller title */
+  font-size: 2.5rem;
+  /* Slightly smaller title */
   color: var(--color-accent);
   text-align: center;
-  margin-top: 5vh; /* Reduced top margin */
-  margin-bottom: 2vh; /* Reduced bottom margin */
+  margin-top: 5vh;
+  /* Reduced top margin */
+  margin-bottom: 2vh;
+  /* Reduced bottom margin */
   border-bottom: var(--color-accent) 2px solid;
   padding-bottom: 0.5vh;
 }
@@ -417,12 +469,15 @@ body {
 .result-survey {
   width: 80%;
   max-width: 800px;
-  margin: 1vh auto; /* Reduced margin */
-  padding: 1vh 1vw; /* Reduced padding */
+  margin: 1vh auto;
+  /* Reduced margin */
+  padding: 1vh 1vw;
+  /* Reduced padding */
   background-color: #252525;
   border-radius: 1rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  flex: 1; /* Allow it to grow within available space */
+  flex: 1;
+  /* Allow it to grow within available space */
   display: flex;
   flex-direction: column;
 }
@@ -430,9 +485,11 @@ body {
 /* Survey ID title */
 .result-survey h2 {
   color: var(--color-accent);
-  font-size: 1.2rem; /* Smaller font size */
+  font-size: 1.2rem;
+  /* Smaller font size */
   font-weight: 600;
-  margin-bottom: 0.8vh; /* Reduced margin */
+  margin-bottom: 0.8vh;
+  /* Reduced margin */
   padding-bottom: 0.3vh;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -442,16 +499,20 @@ body {
   list-style: none;
   padding: 0;
   margin: 0;
-  flex: 1; /* Take available space */
-  overflow-y: auto; /* Allow internal scrolling if needed */
+  flex: 1;
+  /* Take available space */
+  overflow-y: auto;
+  /* Allow internal scrolling if needed */
 }
 
 /* Individual response item */
 .result-response-item {
   display: flex;
   flex-direction: column;
-  padding: 0.5vh 0.5vw; /* Reduced padding */
-  margin-bottom: 0.5vh; /* Reduced margin */
+  padding: 0.5vh 0.5vw;
+  /* Reduced padding */
+  margin-bottom: 0.5vh;
+  /* Reduced margin */
   background-color: #2f2f2f;
   border-radius: 0.5rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -459,15 +520,19 @@ body {
 }
 
 .result-response-item:hover {
-  transform: translateY(-1px); /* Reduced hover effect */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Smaller shadow */
+  transform: translateY(-1px);
+  /* Reduced hover effect */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* Smaller shadow */
 }
 
 /* Response text */
 .result-response-text {
   color: var(--color-accent);
-  font-size: 0.8rem; /* Smaller font */
-  line-height: 1.2; /* Tighter line height */
+  font-size: 0.8rem;
+  /* Smaller font */
+  line-height: 1.2;
+  /* Tighter line height */
   word-wrap: break-word;
 }
 
@@ -475,14 +540,46 @@ body {
 .result-question-label {
   color: var(--color-primary);
   font-weight: 600;
-  font-size: 0.85rem; /* Slightly smaller */
-  margin-bottom: 0.2vh; /* Reduced margin */
+  font-size: 0.85rem;
+  /* Slightly smaller */
+  margin-bottom: 0.2vh;
+  /* Reduced margin */
 }
 
 /* No responses message */
 .result-no-responses {
   color: var(--color-accent);
-  font-size: 1rem; /* Smaller font */
+  font-size: 1rem;
+  /* Smaller font */
   text-align: center;
-  margin-top: 10vh; /* Reduced margin */
+  margin-top: 10vh;
+  /* Reduced margin */
+}
+
+
+.survey-navigation {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.survey-previous-btn,
+.survey-next-btn {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.survey-previous-btn:hover,
+.survey-next-btn:hover {
+  background-color: #0056b3;
+}
+
+.survey-next-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
