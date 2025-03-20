@@ -1,9 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 export const Result = () => {
   const [responses, setResponses] = useState<Record<number, Record<string, string | string[]>> | null>(null);
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
+  const handleRestart = () => {
+    localStorage.removeItem('surveyResponses');
+    localStorage.removeItem('currentSurveyIndex');
+    navigate('/');
+  };
 
   useEffect(() => {
     const savedResponses = localStorage.getItem('surveyResponses');
@@ -32,6 +40,7 @@ export const Result = () => {
           </ul>
         </div>
       ))}
+      <button onClick={handleRestart}> { t('result.surveyRestart')} </button>
     </div>
   );
 };

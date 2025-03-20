@@ -20,6 +20,7 @@
     "result.title": "Survey Results",
     "result.noResponses": "No responses saved",
     "result.surveyLabel": "Survey {{id}}",
+    "result.surveyRestart": "Restart Surveys",
     "survey.1.title": "User Data Questionnaire",
     "survey.1.question.name": "What is your name?",
     "survey.1.question.birthdate": "What is your date of birth?",

@@ -20,6 +20,7 @@
     "result.title": "Resultados de las encuestas",
     "result.noResponses": "No hay respuestas guardadas",
     "result.surveyLabel": "Encuesta {{id}}",
+    "result.surveyRestart": "Reiniciar Formularios",
     "survey.1.title": "Cuestionario de Datos del Usuario",
     "survey.1.question.name": "¿Cuál es tu nombre?",
     "survey.1.question.birthdate": "¿Cuál es tu fecha de nacimiento?",
