@@ -6,14 +6,14 @@ export const getSurveys = (): Survey[] => [
     titulo: 'survey.1.title',
     preguntas: [
       {
-        id: 'nombre',
+        id: 'name',
         tipo: 'text',
         pregunta: 'survey.1.question.name',
         respuesta: '',
         restricciones: { min: 3, max: 50 },
       },
       {
-        id: 'fecha_nacimiento',
+        id: 'birthdate',
         tipo: 'text',
         pregunta: 'survey.1.question.birthdate',
         respuesta: '',
@@ -29,14 +29,14 @@ export const getSurveys = (): Survey[] => [
         validacion: { formato: 'email', dominio: 'stucom.com' },
       },
       {
-        id: 'sexo',
+        id: 'gender',
         tipo: 'select',
         pregunta: 'survey.1.question.gender',
         respuesta: '',
         opciones: ['survey.1.option.gender.male', 'survey.1.option.gender.female', 'survey.1.option.gender.other'],
       },
       {
-        id: 'preferencias',
+        id: 'preferences',
         tipo: 'check',
         pregunta: 'survey.1.question.preferences',
         respuesta: '',
@@ -54,28 +54,28 @@ export const getSurveys = (): Survey[] => [
     titulo: 'survey.2.title',
     preguntas: [
       {
-        id: 'comentarios',
+        id: 'improvements',
         tipo: 'textarea',
         pregunta: 'survey.2.question.improvements',
         respuesta: 'El contenido del curso está bien, pero sería útil más ejemplos prácticos.',
         restricciones: { min: 15, max: 250 },
       },
       {
-        id: 'satisfaccion',
+        id: 'satisfaction',
         tipo: 'select',
         pregunta: 'survey.2.question.satisfaction',
         respuesta: '4',
         opciones: ['survey.2.option.satisfaction.1', 'survey.2.option.satisfaction.2', 'survey.2.option.satisfaction.3', 'survey.2.option.satisfaction.4', 'survey.2.option.satisfaction.5'],
       },
       {
-        id: 'asistencia',
+        id: 'attendance',
         tipo: 'check',
         pregunta: 'survey.2.question.attendance',
         respuesta: 'no',
         opciones: ['survey.2.option.attendance.yes', 'survey.2.option.attendance.no'],
       },
       {
-        id: 'horarios',
+        id: 'schedule',
         tipo: 'check',
         pregunta: 'survey.2.question.schedule',
         respuesta: [],
@@ -95,21 +95,21 @@ export const getSurveys = (): Survey[] => [
     titulo: 'survey.3.title',
     preguntas: [
       {
-        id: 'comentarios',
+        id: 'techInterest',
         tipo: 'textarea',
         pregunta: 'survey.3.question.techInterest',
         respuesta: 'Me gustaría aprender sobre inteligencia artificial y machine learning.',
         restricciones: { min: 20, max: 200 },
       },
       {
-        id: 'sistema_operativo',
+        id: 'osPreference',
         tipo: 'select',
         pregunta: 'survey.3.question.osPreference',
         respuesta: 'Linux',
         opciones: ['survey.3.option.os.windows', 'survey.3.option.os.linux', 'survey.3.option.os.macos'],
       },
       {
-        id: 'productos',
+        id: 'devices',
         tipo: 'check',
         pregunta: 'survey.3.question.devices',
         respuesta: ['smartphone'],
@@ -122,7 +122,7 @@ export const getSurveys = (): Survey[] => [
         validacion: { max_seleccionados: 2 },
       },
       {
-        id: 'tiempo',
+        id: 'techTime',
         tipo: 'select',
         pregunta: 'survey.3.question.techTime',
         respuesta: '5',
@@ -140,14 +140,14 @@ export const getSurveys = (): Survey[] => [
     titulo: 'survey.4.title',
     preguntas: [
       {
-        id: 'comentarios',
+        id: 'movieGenre',
         tipo: 'textarea',
         pregunta: 'survey.4.question.movieGenre',
         respuesta: 'Acción, ciencia ficción y comedia.',
         restricciones: { min: 10, max: 150 },
       },
       {
-        id: 'favorito',
+        id: 'favoriteMovie',
         tipo: 'select',
         pregunta: 'survey.4.question.favoriteMovie',
         respuesta: 'Inception',
@@ -159,7 +159,7 @@ export const getSurveys = (): Survey[] => [
         ],
       },
       {
-        id: 'vista',
+        id: 'moviesSeen',
         tipo: 'check',
         pregunta: 'survey.4.question.moviesSeen',
         respuesta: 'sí',
@@ -171,7 +171,7 @@ export const getSurveys = (): Survey[] => [
         ],
       },
       {
-        id: 'frecuencia',
+        id: 'movieFrequency',
         tipo: 'select',
         pregunta: 'survey.4.question.movieFrequency',
         respuesta: '4',
